@@ -1,0 +1,37 @@
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+    "vue/setup-compiler-macros": true,
+  },
+  parser: "vue-eslint-parser",
+  extends: [
+    "eslint:recommended",
+    "plugin:vue/vue3-essential",
+    // "standard-with-typescript",
+    "plugin:@typescript-eslint/recommended",
+  ],
+  overrides: [],
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+    parser: "@typescript-eslint/parser",
+  },
+  plugins: ["vue", "@typescript-eslint"],
+  rules: {
+    quotes: "off",
+    semi: "off",
+    "comma-dangle": "off",
+    "no-undef": "off",
+    "prefer-const": "off",
+    "vue/multi-word-component-names": "off",
+    "no-async-promise-executor": "off",
+    "no-debugger": "off",
+    eqeqeq: "error",
+    "default-case": "error",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-useless-escape": "off",
+  },
+};

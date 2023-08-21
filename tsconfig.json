@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "suppressImplicitAnyIndexErrors": true,
+    "ignoreDeprecations": "5.0",
+    // 基础路径
+    "paths": {
+      "@/*": ["./src/*"],
+      "#/*": ["./types/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "vite.config.ts",
+    "vite/**/*.ts",
+    "mock/**/*.ts",
+    "types/**/*.ts",
+    "types/**/*.d.ts",
+    "src/views/admin/tsxDemo/tsxTest.jsx"
+  ]
+  // "references": [{ "path": "./tsconfig.node.json" }]
+}
