@@ -37,32 +37,32 @@ export default class Axios {
   }
   public jsonp(url:string,data:any) {
     if(!url)
-          throw new Error('url is necessary')
-      const callback = 'CALLBACK' + Math.random().toString().substr(9,18)
-      const JSONP = document.createElement('script')
-            JSONP.setAttribute('type','text/javascript')
+      throw new Error('url is necessary')
+    const callback = 'CALLBACK' + Math.random().toString().substr(9,18)
+    const JSONP = document.createElement('script')
+    JSONP.setAttribute('type','text/javascript')
   
-      const headEle = document.getElementsByTagName('head')[0]
+    const headEle = document.getElementsByTagName('head')[0]
   
-      let ret = '';
-      if(data){
-          if(typeof data === 'string')
-              ret = '&' + data;
-          else if(typeof data === 'object') {
-              for(let key in data)
-                  ret += '&' + key + '=' + encodeURIComponent(data[key]);
-          }
-          ret += '&_time=' + Date.now();
+    let ret = '';
+    if(data){
+      if(typeof data === 'string')
+        ret = '&' + data;
+      else if(typeof data === 'object') {
+        for(let key in data)
+          ret += '&' + key + '=' + encodeURIComponent(data[key]);
       }
-      JSONP.src = `${url}?callback=${callback}${ret}`;
-      return new Promise( (resolve,reject) => {
-          window[callback] = (r:any) => {
-            resolve(r)
-            headEle.removeChild(JSONP)
-            delete window[callback]
-          }
-          headEle.appendChild(JSONP)
-      })
+      ret += '&_time=' + Date.now();
+    }
+    JSONP.src = `${url}?callback=${callback}${ret}`;
+    return new Promise( (resolve) => {
+      window[callback] = (r:any) => {
+        resolve(r)
+        headEle.removeChild(JSONP)
+        delete window[callback]
+      }
+      headEle.appendChild(JSONP)
+    })
   }
   private interceptors() {
     // 添加请求拦截器
@@ -110,15 +110,15 @@ export default class Axios {
         // 超出 2xx 范围的状态码都会触发该函数。
         // 对响应错误做点什么
         switch (error.response.status) {
-          case 'Throttling':
-            break;
-          case 401:
-            user().userLogOut();
-            break;
-          case 422:
-            message.error("表单验证错误");
-            break;
-            default:
+        case 'Throttling':
+          break;
+        case 401:
+          user().userLogOut();
+          break;
+        case 422:
+          message.error("表单验证错误");
+          break;
+        default:
               
         }
         return Promise.reject(error);

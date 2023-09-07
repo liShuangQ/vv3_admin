@@ -61,7 +61,7 @@ const add = () => {
 
 const draggable = ref<HTMLElement|null>()
 const { x, y, style } = useDraggable(draggable, {
-  initialValue: { x: 40, y: 40 },
+  initialValue: { x: 220, y: 140 },
 })
 </script>
 

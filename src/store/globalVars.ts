@@ -7,6 +7,6 @@ import { GlobalVars } from "#/globalVars";
 //   }
 // );
 const globalVars = reactive<GlobalVars>({
-    demo: false,
+  demo: false,
 })
 export default globalVars

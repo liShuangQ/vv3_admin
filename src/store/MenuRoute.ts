@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { menuRoute } from "../router/module/admin";
+import { menuRoute } from "@/router/module/admin";
 import { HistoryMenu, Menu } from "#/menu";
 import { cloneDeep } from "lodash";
 import router from "@/router";
@@ -120,8 +120,8 @@ export default defineStore("MenuRouter", {
         if (beforeMenu) {
           return beforeMenu
         }else{
-            this.addHistoryMenu(this.defaultMenu)
-            return this.defaultMenu
+          this.addHistoryMenu(this.defaultMenu)
+          return this.defaultMenu
         }
       }else{
         return null;
