@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full grid grid-cols-7 grid-rows-6 gap-x-4 gap-y-6">
+  <div class="w-full grid grid-cols-6 grid-rows-6 gap-x-4 gap-y-2">
     <a-button type="primary" @click="info">Display normal message</a-button>
     <a-button type="primary" @click="httpsDemo(true)">节流请求</a-button>
     <a-button type="primary" @click="httpsDemo(false)">普通请求</a-button>
@@ -12,9 +12,16 @@
       <h3 v-format-time="'YYYY-MM-DD hh:mm:ss'">1632475987312</h3>
     </div>
     <div ref="draggable" class="bg-amber-400 w-[200px] h-[200px] fixed cursor-move select-none" :style="style">
-      <div>VueUse试用</div>
+      <div>VueUse例子</div>
       <div>{{x}}</div>
       <div>{{y}}</div>
+    </div>
+    <div class="bg-test">
+      tailwind颜色配置
+      <div class="w-screen flex gap-4">
+        <div class="w-base h-base bg-tahiti-300"></div>
+        <a-button @click="setColor">随机颜色(主题设置)</a-button>
+      </div>
     </div>
   </div>
 </template>
@@ -61,8 +68,16 @@ const add = () => {
 
 const draggable = ref<HTMLElement|null>()
 const { x, y, style } = useDraggable(draggable, {
-  initialValue: { x: 220, y: 140 },
+  initialValue: { x: 1700, y: 600 },
 })
+
+
+const setColor = () => {
+  const r = Math.floor(Math.random() * 255)
+  const g = Math.floor(Math.random() * 255)
+  const b = Math.floor(Math.random() * 255)
+  document.body.style.setProperty("--test",  `rgb(${r}, ${g}, ${b})`);
+}
 </script>
 
 <style scoped></style>
