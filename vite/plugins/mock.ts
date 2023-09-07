@@ -3,5 +3,5 @@ export function setupMockPlugin(isBuild:boolean) {
     return viteMockServe({
         mockPath: 'mock',
         localEnabled: !isBuild,
-      })
+    })
 }

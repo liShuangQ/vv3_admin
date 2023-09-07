@@ -15,12 +15,12 @@ export default {
         }
         if (window.location.href.indexOf("#debug") === -1) {
             setInterval(function () {
-              (function (a) {
-                return (function (a) {
-                  return Function('Function(arguments[0]+"' + a + '")()');
-                })(a);
-              })("bugger")("de", 0, 0, 0);
+                (function (a) {
+                    return (function (a) {
+                        return Function('Function(arguments[0]+"' + a + '")()');
+                    })(a);
+                })("bugger")("de", 0, 0, 0);
             }, 2000);
-          }
+        }
     }
 }

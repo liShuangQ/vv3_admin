@@ -25,16 +25,16 @@
 <script setup lang="ts">
 // ['change', 'update']
 const props = withDefaults(
-  defineProps<{
+    defineProps<{
     text: string;
     obj?: { name: string }[]; // 是否必传
   }>(),
-  {
-    text: "默认值",
-    obj: () => {
-      return [{ name: "" }];
-    },
-  }
+    {
+        text: "默认值",
+        obj: () => {
+            return [{ name: "" }];
+        },
+    }
 );
 // let props = defineProps<{
 //   aa: string;
@@ -44,11 +44,11 @@ let emit = defineEmits<{ (event: "handleFather", a: string): void }>();
 
 let num = ref<number>(0);
 const numAdd = (): void => {
-  num.value++;
+    num.value++;
 };
 
 defineExpose({
-  numAdd,
+    numAdd,
 });
 </script>
 

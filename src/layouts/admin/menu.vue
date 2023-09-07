@@ -30,60 +30,60 @@ import MenuRouter from "@/store/MenuRoute";
 import router from "@/router";
 import SubMenu from "./SubMenu.vue";
 export default defineComponent({
-  components: {
-    "sub-menu": SubMenu,
-  },
-  setup() {
-    const collapsed = ref<boolean>(false);
-    const menuStore = MenuRouter();
-    const list = menuStore.menu.children;
-    const routeArr = menuStore.route;
+    components: {
+        "sub-menu": SubMenu,
+    },
+    setup() {
+        const collapsed = ref<boolean>(false);
+        const menuStore = MenuRouter();
+        const list = menuStore.menu.children;
+        const routeArr = menuStore.route;
 
-    let selectedKeys = ref<string[]>(["/index"]);
-    let openKeys = ref<string[]>([""]);
+        let selectedKeys = ref<string[]>(["/index"]);
+        let openKeys = ref<string[]>([""]);
 
-    const routerTo = (e: { item: object; key: string; keyPath: string[] }) => {
-      const goPathData =
+        const routerTo = (e: { item: object; key: string; keyPath: string[] }) => {
+            const goPathData =
         routeArr.children &&
         routeArr.children.find((v) => {
-          return v.path === e.key;
+            return v.path === e.key;
         });
-      menuStore.addHistoryMenu({
-        // title: e.domEvent.path[0].innerText,
-        title: goPathData?.meta.title as string,
-        selectedKeys: e.key,
-        openKeys: e.keyPath,
-      });
-      router.push({ path: e.key });
-    };
-    const setMenuPosition = (s: string, o: string[]): void => {
-      selectedKeys.value = [s];
-      openKeys.value = o;
-    };
+            menuStore.addHistoryMenu({
+                // title: e.domEvent.path[0].innerText,
+                title: goPathData?.meta.title as string,
+                selectedKeys: e.key,
+                openKeys: e.keyPath,
+            });
+            router.push({ path: e.key });
+        };
+        const setMenuPosition = (s: string, o: string[]): void => {
+            selectedKeys.value = [s];
+            openKeys.value = o;
+        };
 
-    // 响应切换菜单的展开
-    watch(
-      () => router.currentRoute.value.path,
-      (newValue) => {
-        if (router.currentRoute.value.meta.parentPaths) {
-          openKeys.value = router.currentRoute.value.meta
-            .parentPaths as string[];
-        } else {
-          openKeys.value = [""];
-        }
-        selectedKeys.value = [newValue];
-      },
-      { immediate: true }
-    );
+        // 响应切换菜单的展开
+        watch(
+            () => router.currentRoute.value.path,
+            (newValue) => {
+                if (router.currentRoute.value.meta.parentPaths) {
+                    openKeys.value = router.currentRoute.value.meta
+                        .parentPaths as string[];
+                } else {
+                    openKeys.value = [""];
+                }
+                selectedKeys.value = [newValue];
+            },
+            { immediate: true }
+        );
 
-    return {
-      list,
-      collapsed,
-      selectedKeys,
-      openKeys,
-      routerTo,
-      setMenuPosition,
-    };
-  },
+        return {
+            list,
+            collapsed,
+            selectedKeys,
+            openKeys,
+            routerTo,
+            setMenuPosition,
+        };
+    },
 });
 </script>

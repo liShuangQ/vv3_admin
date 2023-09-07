@@ -66,12 +66,12 @@
 </template>
 <script lang="ts">
 export default {
-  // 登录才可进入
-  route: {
-    meta: {
-      auth: true,
+    // 登录才可进入
+    route: {
+        meta: {
+            auth: true,
+        },
     },
-  },
 };
 </script>
 <script lang="ts" setup>
@@ -80,7 +80,7 @@ import i18n from "@/plugins/i18n";
 const Menu = defineAsyncComponent(() => import("./admin/menu.vue"));
 const navbar = defineAsyncComponent(() => import("./admin/navbar.vue"));
 const historyLink = defineAsyncComponent(
-  () => import("./admin/historyLink.vue")
+    () => import("./admin/historyLink.vue")
 );
 const menuSearch = defineAsyncComponent(() => import("./admin/menuSearch.vue"));
 const ability = defineAsyncComponent(() => import("./admin/ability.vue"));
@@ -92,24 +92,24 @@ let MenuRef = ref(null);
 // ability 组件操作
 let full = ref<boolean>(false); // 是否页面全屏
 const setFullFun = (e: any) => {
-  if (e.keyCode === 27) {
-    full.value = false;
-    document.removeEventListener("keyup", setFullFun);
-  }
+    if (e.keyCode === 27) {
+        full.value = false;
+        document.removeEventListener("keyup", setFullFun);
+    }
 };
 const pageFullScreen = () => {
-  full.value = true;
-  message.info(t("navbar.fullScreenTit"));
-  document.addEventListener("keyup", setFullFun);
+    full.value = true;
+    message.info(t("navbar.fullScreenTit"));
+    document.addEventListener("keyup", setFullFun);
 };
 
 let refreshPageValue = ref<boolean>(true);
 const refreshPage = () => {
-  refreshPageValue.value = false;
-  nextTick(() => {
-    refreshPageValue.value = true;
-  });
-  return;
+    refreshPageValue.value = false;
+    nextTick(() => {
+        refreshPageValue.value = true;
+    });
+    return;
 };
 </script>
 <style scoped>

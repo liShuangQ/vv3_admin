@@ -5,12 +5,12 @@ import layoutRoutes from "./autoload/index";
 import guard from "./guard";
 
 const router = createRouter({
-  // history: createWebHistory(),
-  history: createWebHashHistory(),
-  routes: [...routes, ...layoutRoutes],
+    // history: createWebHistory(),
+    history: createWebHashHistory(),
+    routes: [...routes, ...layoutRoutes],
 });
 export const setupRouter = async (app: App) => {
-  guard(router);
-  app.use(router);
+    guard(router);
+    app.use(router);
 };
 export default router;

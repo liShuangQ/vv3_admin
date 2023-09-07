@@ -21,15 +21,15 @@ const props = defineProps<{
 
 let { d } = toRefs(props);
 const dAdd = () => {
-  d.value.config.forEach((e) => (e.name += "-"));
-  // copy.value.config.push({ name: "2" });
+    d.value.config.forEach((e) => (e.name += "-"));
+    // copy.value.config.push({ name: "2" });
 };
 
 const getName = () => {
-  return {
-    faName: toRaw(props.d.config),
-    copy: toRaw(d.value.config),
-  };
+    return {
+        faName: toRaw(props.d.config),
+        copy: toRaw(d.value.config),
+    };
 };
 defineExpose({ getName });
 </script>

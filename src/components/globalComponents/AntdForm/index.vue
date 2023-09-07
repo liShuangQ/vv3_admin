@@ -122,43 +122,43 @@ const props = defineProps<{
 }>();
 let ListModelForm = ref();
 const renderFormModel = (): void => {
-  let model = {};
-  let formItems = Array.from(props.config.formItems || []);
-  formItems.forEach((item) => {
-    item.forEach((e) => {
-      model[e.key] = e.defaultValue;
+    let model = {};
+    let formItems = Array.from(props.config.formItems || []);
+    formItems.forEach((item) => {
+        item.forEach((e) => {
+            model[e.key] = e.defaultValue;
+        });
     });
-  });
-  ListModelForm.value = model;
+    ListModelForm.value = model;
 };
 renderFormModel();
 const formRef = ref<FormInstance>();
 const resetFields = (): void => {
-  formRef.value?.resetFields();
+    formRef.value?.resetFields();
 };
 const labelCol = (d: Col | string | undefined) => {
-  if (!d) {
-    return undefined;
-  }
-  if (typeof d === "string") {
-    return { style: { width: d } };
-  } else {
-    return { span: d.span, offset: d.offset };
-  }
+    if (!d) {
+        return undefined;
+    }
+    if (typeof d === "string") {
+        return { style: { width: d } };
+    } else {
+        return { span: d.span, offset: d.offset };
+    }
 };
 
 // ---------------------------------------------------
 const validate = () => {
-  formRef.value?.validate().then((res) => {
-    console.log(res, "处理前");
-    Object.keys(res).forEach((e) => {
-      res[e] = toRaw(res[e]);
+    formRef.value?.validate().then((res) => {
+        console.log(res, "处理前");
+        Object.keys(res).forEach((e) => {
+            res[e] = toRaw(res[e]);
+        });
+        console.log(res, "处理后");
     });
-    console.log(res, "处理后");
-  });
 };
 const clearValidate = () => {
-  formRef.value?.clearValidate();
+    formRef.value?.clearValidate();
 };
 </script>
 

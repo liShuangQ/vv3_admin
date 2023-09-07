@@ -4,5 +4,5 @@ export function setupLegacyPlugin() {
         targets: ['chrome < 60', 'edge < 15'],
         renderLegacyChunks: true,
     });
-  }
+}
 

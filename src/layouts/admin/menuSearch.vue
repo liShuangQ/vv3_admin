@@ -35,47 +35,47 @@ interface Option {
 }
 let options = ref<Option[]>();
 const setOptions = () => {
-  let d: Option[] = [];
-  MenuRouterStore.route.children?.forEach((e) => {
-    if (!(e.meta.menuHidden || !e.meta.show)) {
-      d.push({
-        value: e.path,
-        label: t(e.meta.title),
-        data: { title: e.meta.title, openKeys: e.meta.parentPaths },
-      });
-    }
-  });
-  options.value = d;
+    let d: Option[] = [];
+    MenuRouterStore.route.children?.forEach((e) => {
+        if (!(e.meta.menuHidden || !e.meta.show)) {
+            d.push({
+                value: e.path,
+                label: t(e.meta.title),
+                data: { title: e.meta.title, openKeys: e.meta.parentPaths },
+            });
+        }
+    });
+    options.value = d;
 };
 setOptions();
 
 const handleChange = (
-  value: string,
-  option: { data: { title: string; openKeys: string[] } }
+    value: string,
+    option: { data: { title: string; openKeys: string[] } }
 ) => {
-  value &&
+    value &&
     MenuRouterStore.addHistoryMenu({
-      title: option.data.title,
-      selectedKeys: value,
-      openKeys: option.data.openKeys,
+        title: option.data.title,
+        selectedKeys: value,
+        openKeys: option.data.openKeys,
     });
-  router.push({ path: value });
+    router.push({ path: value });
 };
 const handleBlur = () => {
-  value.value = undefined;
+    value.value = undefined;
 };
 
 const filterOption = (
-  input: string,
-  option: { value: string; label: string }
+    input: string,
+    option: { value: string; label: string }
 ) => {
-  return option.label.indexOf(input) >= 0;
+    return option.label.indexOf(input) >= 0;
 };
 
 // 监听国际化的状态
 watch(locale, (newValue) => {
-  // console.log(newValue, "语言变化");
-  setOptions();
+    // console.log(newValue, "语言变化");
+    setOptions();
 });
 </script>
 <style lang="scss" scoped></style>

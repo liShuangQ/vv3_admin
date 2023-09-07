@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 let props = defineProps({
-  text: String,
+    text: String,
 });
 </script>
 
