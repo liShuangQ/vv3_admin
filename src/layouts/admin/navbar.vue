@@ -88,24 +88,24 @@ let count = ref<number>(1);
 //用户操作
 let infoVisible = ref<boolean>(false);
 const showModal = () => {
-  infoVisible.value = true;
+    infoVisible.value = true;
 };
 const userLogOut = () => {
-  userStore.userLogOut();
+    userStore.userLogOut();
 };
 // 整个管理系统全屏
 const allFull = () => {
-  const element = document.documentElement;
-  if (element.requestFullscreen) {
-    element.requestFullscreen();
-  }
-  // else if ( element.webkitRequestFullScreen ) {
-  //   element.webkitRequestFullScreen()
-  // } else if ( element.mozRequestFullScreen ) {
-  //   element.mozRequestFullScreen()
-  // } else if ( element.msRequestFullscreen ) {
-  //   element.msRequestFullscreen()
-  // }
+    const element = document.documentElement;
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    }
+    // else if ( element.webkitRequestFullScreen ) {
+    //   element.webkitRequestFullScreen()
+    // } else if ( element.mozRequestFullScreen ) {
+    //   element.mozRequestFullScreen()
+    // } else if ( element.msRequestFullscreen ) {
+    //   element.msRequestFullscreen()
+    // }
 };
 // 挂机锁
 let lockVisible = ref<boolean>(false);
@@ -113,23 +113,23 @@ let lockPassWord = ref<string>("");
 let inputLockPassWord = ref<string>("");
 let locking = ref<boolean>(false);
 const hookLock = (): void => {
-  lockVisible.value = true;
-  return;
+    lockVisible.value = true;
+    return;
 };
 const onPassWord = (): void => {
-  locking.value = true;
-  return;
+    locking.value = true;
+    return;
 };
 const openBlock = (): void => {
-  if (lockPassWord.value === inputLockPassWord.value) {
-    lockVisible.value = false;
-    locking.value = false;
-    lockPassWord.value = "";
-    inputLockPassWord.value = "";
-  } else {
-    message.warning("密码输入错误");
-  }
-  return;
+    if (lockPassWord.value === inputLockPassWord.value) {
+        lockVisible.value = false;
+        locking.value = false;
+        lockPassWord.value = "";
+        inputLockPassWord.value = "";
+    } else {
+        message.warning("密码输入错误");
+    }
+    return;
 };
 </script>
 

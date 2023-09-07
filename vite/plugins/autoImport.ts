@@ -6,12 +6,12 @@ export function setupAutoImportPlugin() {
     return AutoImport({
         imports: ["vue", "vue-router", "vue-i18n"],
         dts: "types/auto-imports.d.ts",
-      });
-  }
+    });
+}
 
 
 export function setupAutoImportAntd() {
-  return Components({
-    resolvers: [AntDesignVueResolver()],
-  })
+    return Components({
+        resolvers: [AntDesignVueResolver()],
+    })
 }

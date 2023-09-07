@@ -20,13 +20,13 @@ import router from "@/router";
 import MenuRoute from "@/store/MenuRoute";
 const menu = MenuRoute();
 const tagSub = (item: HistoryMenu) => {
-  router.push({ path: item.selectedKeys });
+    router.push({ path: item.selectedKeys });
 };
 const tagDel = (item: HistoryMenu) => {
-  let hm = menu.removeHistoryMenu(item);
-  hm &&
+    let hm = menu.removeHistoryMenu(item);
+    hm &&
     router.push({
-      path: hm.selectedKeys,
+        path: hm.selectedKeys,
     });
 };
 </script>

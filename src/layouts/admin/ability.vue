@@ -81,16 +81,16 @@ const emit = defineEmits<{
 }>();
 // 对于历史菜单标签的操作
 const historyLinkHandle: MenuProps["onClick"] = (e) => {
-  menuStore.handleHistoryMenu(
-    router.currentRoute.value.path,
+    menuStore.handleHistoryMenu(
+        router.currentRoute.value.path,
     e.key as "left" | "right" | "now" | "all"
-  );
+    );
 };
 // 国际化
 const { locale } = useI18n();
 locale.value = userStore.info?.lang ?? "zh";
 const langChange = (val: string): void => {
-  locale.value = val;
+    locale.value = val;
 };
 </script>
 

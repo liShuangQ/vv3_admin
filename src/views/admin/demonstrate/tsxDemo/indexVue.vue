@@ -14,11 +14,11 @@ let num = ref<number>(0);
 let msg = ref<string>("我是父组件传的值");
 let tsxRef = ref();
 const test = (): void => {
-  msg.value += "+";
-  tsxRef.value.showMe();
+    msg.value += "+";
+    tsxRef.value.showMe();
 };
 const faNumAdd = (n: number): void => {
-  num.value = num.value + n;
+    num.value = num.value + n;
 };
 </script>
 

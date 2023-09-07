@@ -5,9 +5,9 @@ import * as AntdIconsVue from "@ant-design/icons-vue";
 import setAntVueConfig from "./config"
 setAntVueConfig()
 export default function setupAntd(app: App) {
-  for (const [key, component] of Object.entries(AntdIconsVue)) {
-    app.component(key, component);
-  }
-  // app.use(Antd);
+    for (const [key, component] of Object.entries(AntdIconsVue)) {
+        app.component(key, component);
+    }
+    // app.use(Antd);
 }
 

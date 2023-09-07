@@ -5,6 +5,6 @@ import { App } from "vue";
 //   console.log(proxy.msg);
 // });
 const setGlobalProperties = (app:App) => {
-  app.config.globalProperties.msg = 'hello'
+    app.config.globalProperties.msg = 'hello'
 }
 export default setGlobalProperties

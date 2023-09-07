@@ -159,10 +159,10 @@
 
 <script setup lang="ts">
 const onFinish = () => {
-  console.log("finished!");
+    console.log("finished!");
 };
 onBeforeUnmount(() => {
-  console.log(`the component is now BeforeUnmount.`);
+    console.log(`the component is now BeforeUnmount.`);
 });
 let deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30;
 </script>

@@ -77,7 +77,7 @@
 </template>
 <script lang="ts">
 export default {
-  route: { name: "login", meta: { guest: true } },
+    route: { name: "login", meta: { guest: true } },
 };
 </script>
 <script setup lang="ts">
@@ -85,13 +85,13 @@ import user from "@/store/user";
 import { UserLoginData } from "@/apis/user";
 
 const userData = ref<UserLoginData>({
-  id: "admin",
-  password: "123456",
+    id: "admin",
+    password: "123456",
 });
 
 const userStore = user();
 const userLogin = () => {
-  userStore.userLogin(userData.value);
+    userStore.userLogin(userData.value);
 };
 </script>
 

@@ -33,7 +33,7 @@ import type { Dayjs } from "dayjs";
 import { page } from "@/utils/index";
 import { useDraggable } from '@vueuse/core'
 const info = () => {
-  message.info("This is a normal message");
+    message.info("This is a normal message");
 };
 const httpsDemo = (config: boolean) => {
   interface User {
@@ -42,41 +42,41 @@ const httpsDemo = (config: boolean) => {
     headPortrait: string;
   }
   Https.post<User>({
-    url: "user/info",
-    throttle: config,
-    spinning: config,
-    data: {},
+      url: "user/info",
+      throttle: config,
+      spinning: config,
+      data: {},
   })
-    .then((res) => {
-      message.success(res.msg);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((res) => {
+          message.success(res.msg);
+      })
+      .catch((err) => {
+          console.log(err);
+      });
 };
 let value1 = ref<Dayjs>();
 
 const add = () => {
-  page.addTab({
-    openKeys: [""],
-    selectedKeys: "/cssDemos",
-    title: "menu.cssDemos",
+    page.addTab({
+        openKeys: [""],
+        selectedKeys: "/cssDemos",
+        title: "menu.cssDemos",
     // title: "cssDemos",
-  });
-  return;
+    });
+    return;
 };
 
 const draggable = ref<HTMLElement|null>()
 const { x, y, style } = useDraggable(draggable, {
-  initialValue: { x: 1700, y: 600 },
+    initialValue: { x: 1700, y: 600 },
 })
 
 
 const setColor = () => {
-  const r = Math.floor(Math.random() * 255)
-  const g = Math.floor(Math.random() * 255)
-  const b = Math.floor(Math.random() * 255)
-  document.body.style.setProperty("--test",  `rgb(${r}, ${g}, ${b})`);
+    const r = Math.floor(Math.random() * 255)
+    const g = Math.floor(Math.random() * 255)
+    const b = Math.floor(Math.random() * 255)
+    document.body.style.setProperty("--test",  `rgb(${r}, ${g}, ${b})`);
 }
 </script>
 

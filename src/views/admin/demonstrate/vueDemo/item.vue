@@ -30,16 +30,16 @@ const props = defineProps<{
 let copy = ref(props.d);
 let copy2 = toRef(props, "d"); //两种写法一样 都是转换成响应式的, 如果直接赋值的话会报错
 const copyAdd = () => {
-  copy.value.name += "-";
-  copy2.value.name += "-";
+    copy.value.name += "-";
+    copy2.value.name += "-";
 };
 
 const getName = () => {
-  return {
-    faName: props.d.name,
-    copy: copy.value.name,
-    copy2: copy2.value.name,
-  };
+    return {
+        faName: props.d.name,
+        copy: copy.value.name,
+        copy2: copy2.value.name,
+    };
 };
 defineExpose({ getName });
 </script>

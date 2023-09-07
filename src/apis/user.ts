@@ -8,12 +8,12 @@ export interface User {
 }
 
 export function info(data: any = {}) {
-  return http.request<User>({
-    url: "user/info",
-    method: "post",
-    data,
-    headers: {},
-  });
+    return http.request<User>({
+        url: "user/info",
+        method: "post",
+        data,
+        headers: {},
+    });
 }
 
 interface Login {
@@ -24,9 +24,9 @@ export interface UserLoginData {
   password: string;
 }
 export function login(data: UserLoginData) {
-  return http.request<Login>({
-    url: "user/login",
-    method: "post",
-    data,
-  });
+    return http.request<Login>({
+        url: "user/login",
+        method: "post",
+        data,
+    });
 }

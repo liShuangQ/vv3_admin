@@ -6,12 +6,12 @@ import { setupAutoImportPlugin,setupAutoImportAntd } from "./autoImport";
 import { setupMockPlugin } from "./mock";
 import { setupLegacyPlugin } from "./legacy";
 export function setupPlugins(isBuild: boolean, env: ViteEnv) {
-  const plugins: Plugin[] = [vue()];
-  plugins.push(vueJsx());
-  plugins.push(setupMockPlugin(isBuild));
-  plugins.push(setupAutoImportPlugin());
-  plugins.push(setupAutoImportAntd());
-  plugins.push(eslintPlugin());
-  plugins.push(setupLegacyPlugin());
-  return plugins;
+    const plugins: Plugin[] = [vue()];
+    plugins.push(vueJsx());
+    plugins.push(setupMockPlugin(isBuild));
+    plugins.push(setupAutoImportPlugin());
+    plugins.push(setupAutoImportAntd());
+    plugins.push(eslintPlugin());
+    plugins.push(setupLegacyPlugin());
+    return plugins;
 }
