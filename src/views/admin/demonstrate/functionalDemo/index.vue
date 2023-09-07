@@ -11,6 +11,11 @@
       自定义指令：
       <h3 v-format-time="'YYYY-MM-DD hh:mm:ss'">1632475987312</h3>
     </div>
+    <div ref="draggable" class="bg-amber-400 w-[200px] h-[200px] fixed cursor-move select-none" :style="style">
+      <div>VueUse试用</div>
+      <div>{{x}}</div>
+      <div>{{y}}</div>
+    </div>
   </div>
 </template>
 
@@ -19,6 +24,7 @@ import Https from "@/hooks/UseHttps";
 import { message } from "ant-design-vue";
 import type { Dayjs } from "dayjs";
 import { page } from "@/utils/index";
+import { useDraggable } from '@vueuse/core'
 const info = () => {
   message.info("This is a normal message");
 };
@@ -52,6 +58,11 @@ const add = () => {
   });
   return;
 };
+
+const draggable = ref<HTMLElement|null>()
+const { x, y, style } = useDraggable(draggable, {
+  initialValue: { x: 40, y: 40 },
+})
 </script>
 
 <style scoped></style>
