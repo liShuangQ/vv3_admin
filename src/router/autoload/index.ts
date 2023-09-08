@@ -5,6 +5,7 @@ import autoloadModuleRoutes from "./module";
 let routes = [] as RouteRecordRaw[];
 //根据文件自动注册? 按布局文件和模块内文件配合手动注册?
 if (env.VITE_ROUTER_AUTOLOAD) {
+    console.error('The current route is loaded synchronously, and attention should be paid to changing the relationship between layout routes and menus.')
     //按文件位置
     routes = viewRoutes;
 } else {

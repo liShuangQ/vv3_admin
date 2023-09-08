@@ -1,10 +1,11 @@
-import { RouteRecordRaw } from "vue-router";
-import { env } from "../../utils/index";
+import {RouteRecordRaw} from "vue-router";
+import {env} from "../../utils/index";
 // vite的api,同步提供遍历文件夹下文件,不可用别名
 // 主路由
-const layouts = import.meta.glob("../../layouts/*.vue", { eager: true })
+const layouts = import.meta.glob("../../layouts/*.vue", {eager: true})
 // 子路由(嵌套关系)  **遍历到子目录
-const views = import.meta.glob("../../views/**/index.vue", { eager: true })
+const views = import.meta.glob("../../views/**/index.vue", {eager: true})
+
 // 获取布局路由
 function getRoutes() {
     const layoutRoutes = [] as RouteRecordRaw[];
@@ -20,9 +21,9 @@ function getRoutes() {
 function getChildrenRoutes(layoutRoute: RouteRecordRaw) {
     const routes = [] as RouteRecordRaw[];
     Object.entries(views).forEach(([file, module]) => {
-    // 根据布局文件名匹配views下同名文件夹下子页面
-    // 所以文件夹要严格对应布局文件
-    
+        // 根据布局文件名匹配views下同名文件夹下子页面
+        // 所以文件夹要严格对应布局文件
+
         if (file.includes(`../views/${layoutRoute.name as string}`)) {
             const route = getRouteByModule(file, module as any);
             routes.push(route);
@@ -33,11 +34,10 @@ function getChildrenRoutes(layoutRoute: RouteRecordRaw) {
 
 //将提取文件地址处理成路由对象形式
 function getRouteByModule(file: string, module: { [key: string]: any }) {
-    const name = file.replace(/.+layouts\/|.+views\/|\.vue/gi, "");
-  
+    const name = file.replace(/.+layouts\/|.+views\/|\/index|\.vue/gi, "");
+
     const router = {
-    // name: name.replace("/", "."),
-        name: name,
+        name: name.replace(/\//g, '.'),
         path: `/${name}`,
         component: module.default,
     } as RouteRecordRaw;
@@ -48,7 +48,7 @@ function getRouteByModule(file: string, module: { [key: string]: any }) {
     //   route: { path: "/user" },
     // };
     return Object.assign(router, module.default?.route);
-  
+
 }
 
 const routes = env.VITE_ROUTER_AUTOLOAD
