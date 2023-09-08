@@ -23,7 +23,6 @@ clone 代码后
 
 ## .env 文件配置说明
 
-- VITE_ROUTER_AUTOLOAD `是否开启自动注册路由,开启后如需配合路由菜单需在菜单路由配置中将path改写成与自动注册路由出path一致,开启时的path注意加上/admin,同时注意login后的跳转地址和路由守卫的地址,/地址  例如: path: "/admin/index",`
 - VITE_SKIP_ROUTER_GUARD `是否跳过路由守卫丢失登陆权限等限制，谨慎打开`
 - VITE_TOKEN_KEY `在缓存中token的存储获取key`
 - VITE_IS_MOCK `是否开启mock`
