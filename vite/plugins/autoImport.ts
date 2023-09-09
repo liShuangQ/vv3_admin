@@ -4,6 +4,7 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 
 export function setupAutoImportPlugin() {
     return AutoImport({
+        resolvers: [AntDesignVueResolver()],
         imports: ["vue", "vue-router", "vue-i18n"],
         dts: "types/auto-imports.d.ts",
     });
