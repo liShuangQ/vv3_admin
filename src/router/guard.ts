@@ -19,7 +19,7 @@ class Guard {
         this.router.addRoute(toRaw(this.MenuRouterStore.route) as RouteRecordRaw);
         if (env.VITE_SKIP_ROUTER_GUARD) {
             console.error('VITE_SKIP_ROUTER_GUARD：Please note that there is currently no routing guard operation and it is prohibited to set it in the production environment!')
-            return 
+            return
         }
         this.router.beforeEach(async (to, from) => {
             if (to.meta.auth && !this.getToken()) {
