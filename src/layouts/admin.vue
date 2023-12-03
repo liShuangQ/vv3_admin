@@ -10,7 +10,7 @@
       <Menu ref="MenuRef"></Menu>
     </a-layout-sider>
     <a-layout>
-      <a-layout-header class="p-0 h-10 flex justify-between bg-white">
+      <a-layout-header style="background-color: #ffffff;height: 40px;padding: 0" class="flex justify-between">
         <div class="flex items-center">
           <menu-unfold-outlined
             v-if="collapsed"

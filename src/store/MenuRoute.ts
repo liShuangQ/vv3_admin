@@ -1,7 +1,7 @@
-import { defineStore } from "pinia";
-import { menuRoute } from "@/router/module/admin";
-import { HistoryMenu, Menu } from "#/menu";
-import { cloneDeep } from "lodash";
+import {defineStore} from "pinia";
+import {menuRoute} from "@/router/module/admin";
+import {HistoryMenu, Menu} from "#/menu";
+import {cloneDeep} from "lodash";
 import router from "@/router";
 
 export default defineStore("MenuRouter", {
@@ -11,11 +11,11 @@ export default defineStore("MenuRouter", {
             route: {} as Menu,
             historyMenu: [] as HistoryMenu[],
             // HACK： 清除到没有清除选项时候的默认菜单
-            defaultMenu: {openKeys:["/index"],selectedKeys:"/index",title:"menu.home"} as HistoryMenu
+            defaultMenu: {openKeys: ["/index"], selectedKeys: "/index", title: "menu.home"} as HistoryMenu
         };
     },
     actions: {
-    // 前台菜单 过滤
+        // 前台菜单 过滤
         beforeMenuRoute() {
             // let layout = {
             //   name: "admin",
@@ -28,6 +28,7 @@ export default defineStore("MenuRouter", {
             this.menu = menuRoute;
             let adminRoute = cloneDeep(menuRoute);
             let adminChildren: Menu[] = [];
+
             function getRouteData(data: Menu[]) {
                 data.forEach((ele) => {
                     if ((!ele.children || ele.children.length === 0) && ele.meta.show) {
@@ -38,6 +39,7 @@ export default defineStore("MenuRouter", {
                     }
                 });
             }
+
             adminRoute.children && getRouteData(adminRoute.children);
             adminRoute["children"] = adminChildren;
             this.route = adminRoute;
@@ -54,6 +56,7 @@ export default defineStore("MenuRouter", {
             // };
             let adminRoute = cloneDeep(menuRoute);
             let adminChildren: Menu[] = [];
+
             // 初级处理路由和菜单 (只使用返回的path作为唯一id)
             function getRouteData(data: Menu[]) {
                 data.forEach((ele) => {
@@ -69,6 +72,7 @@ export default defineStore("MenuRouter", {
                     }
                 });
             }
+
             adminRoute.children && getRouteData(adminRoute.children);
 
             // 二次处理多余菜单
@@ -93,16 +97,16 @@ export default defineStore("MenuRouter", {
             // 如果是其它两个布局路由 不进入历史菜单
             if (
                 menu.selectedKeys.indexOf("auth") !== -1 ||
-        menu.selectedKeys.indexOf("error") !== -1
+                menu.selectedKeys.indexOf("error") !== -1
             ) {
                 return;
             }
             const item: { title: string; selectedKeys: string; openKeys: string[] } =
-        {
-            openKeys: menu.openKeys,
-            selectedKeys: menu.selectedKeys as string,
-            title: menu.title as string,
-        };
+                {
+                    openKeys: menu.openKeys,
+                    selectedKeys: menu.selectedKeys as string,
+                    title: menu.title as string,
+                };
             const isHas = this.historyMenu.some(
                 (e) => e.selectedKeys === menu.selectedKeys
             );
@@ -115,15 +119,15 @@ export default defineStore("MenuRouter", {
         removeHistoryMenu(menu: HistoryMenu) {
             const index = this.historyMenu.indexOf(menu);
             this.historyMenu.splice(index, 1);
-            if (router.currentRoute.value.path === menu.selectedKeys) {  
-                const beforeMenu = this.historyMenu[index-1]
+            if (router.currentRoute.value.path === menu.selectedKeys) {
+                const beforeMenu = this.historyMenu[index - 1]
                 if (beforeMenu) {
                     return beforeMenu
-                }else{
+                } else {
                     this.addHistoryMenu(this.defaultMenu)
                     return this.defaultMenu
                 }
-            }else{
+            } else {
                 return null;
             }
         },
@@ -154,9 +158,9 @@ export default defineStore("MenuRouter", {
             }
             if (type === "now") {
                 this.historyMenu = [
-          this.historyMenu.find((e) => {
-              return e.selectedKeys === selectedKeys;
-          }) as HistoryMenu,
+                    this.historyMenu.find((e) => {
+                        return e.selectedKeys === selectedKeys;
+                    }) as HistoryMenu,
                 ];
             }
             if (type === "all") {
@@ -167,7 +171,7 @@ export default defineStore("MenuRouter", {
                         openKeys: [""],
                     },
                 ];
-                router.push({ path: "/index" });
+                router.push({path: "/index"});
             }
         },
 

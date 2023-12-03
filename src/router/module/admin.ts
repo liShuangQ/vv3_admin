@@ -1,7 +1,7 @@
 import { RouteRecordRaw } from "vue-router";
 import adminRouteData from "../menu/index";
 import { Menu } from "#/menu";
-
+import MenuRouter from "@/store/MenuRoute";
 // 菜单配置
 const menuRoute: Menu = {
     name: "admin",
@@ -12,7 +12,7 @@ const menuRoute: Menu = {
     children: adminRouteData,
 };
 // 未拍平 在菜单获取后拍平
-let adminRoute = menuRoute; 
+let adminRoute = menuRoute;
 
 
 export default adminRoute as RouteRecordRaw;
